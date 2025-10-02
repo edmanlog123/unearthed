@@ -7,9 +7,9 @@ const config = {
     host: process.env.PGHOST,
     port: process.env.PGPORT,
     database: process.env.PGDATABASE,
-    ssl: {
+    ssl: process.env.PGHOST && process.env.PGHOST !== 'localhost' ? {
         rejectUnauthorized: false
-    }
+    } : false
 }
 
 export const pool = new pg.Pool(config)
